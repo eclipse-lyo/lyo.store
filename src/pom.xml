@@ -19,6 +19,7 @@
 
   <modules>
     <module>store-core</module>
+    <module>store-update</module>
   </modules>
 
   <dependencyManagement>
