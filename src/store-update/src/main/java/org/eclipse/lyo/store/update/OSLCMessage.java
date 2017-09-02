@@ -1,4 +1,4 @@
-package org.eclipse.lyo.tools.store.update;
+package org.eclipse.lyo.store.update;
 
 import java.net.URI;
 
