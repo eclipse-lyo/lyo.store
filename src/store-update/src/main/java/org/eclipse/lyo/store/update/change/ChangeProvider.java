@@ -1,4 +1,4 @@
-package org.eclipse.lyo.tools.store.update.change;
+package org.eclipse.lyo.store.update.change;
 
 import java.time.ZonedDateTime;
 import java.util.Collection;

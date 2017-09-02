@@ -1,4 +1,4 @@
-package org.eclipse.lyo.tools.store.update;
+package org.eclipse.lyo.store.update;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import java.net.URI;
@@ -8,10 +8,10 @@ import java.util.Date;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.eclipse.lyo.oslc4j.provider.jena.JenaModelHelper;
-import org.eclipse.lyo.tools.store.Store;
-import org.eclipse.lyo.tools.store.StoreFactory;
-import org.eclipse.lyo.tools.store.update.change.ChangeKind;
-import org.eclipse.lyo.tools.store.update.change.HistoryResource;
+import org.eclipse.lyo.store.Store;
+import org.eclipse.lyo.store.StoreFactory;
+import org.eclipse.lyo.store.update.change.ChangeKind;
+import org.eclipse.lyo.store.update.change.HistoryResource;
 import org.junit.Test;
 
 /**

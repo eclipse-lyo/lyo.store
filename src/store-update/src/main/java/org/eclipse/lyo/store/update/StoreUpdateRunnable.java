@@ -1,13 +1,13 @@
-package org.eclipse.lyo.tools.store.update;
+package org.eclipse.lyo.store.update;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import org.eclipse.lyo.tools.store.Store;
-import org.eclipse.lyo.tools.store.update.change.Change;
-import org.eclipse.lyo.tools.store.update.change.ChangeProvider;
+import org.eclipse.lyo.store.Store;
+import org.eclipse.lyo.store.update.change.Change;
+import org.eclipse.lyo.store.update.change.ChangeProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
