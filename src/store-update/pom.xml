@@ -24,7 +24,7 @@
     <dependency>
       <groupId>org.eclipse.lyo.store</groupId>
       <artifactId>store-core</artifactId>
-      <version>2.2.0</version>
+      <version>${oslc4j-core.version}</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>

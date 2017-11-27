@@ -3,8 +3,11 @@ package org.eclipse.lyo.store.update.handlers;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.List;
+import java.util.TimeZone;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 
@@ -24,7 +27,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.hp.hpl.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Model;
 
 public class TrsMqttChangeLogHandler<T> extends TrsChangelogHandler<T> {
     private final Logger log = LoggerFactory.getLogger(TrsMqttChangeLogHandler.class);
@@ -73,7 +76,11 @@ public class TrsMqttChangeLogHandler<T> extends TrsChangelogHandler<T> {
         URI uri = historyData.getUri();
         URI changedUri;
         try {
-            changedUri = new URI("urn:x-trs:" + historyData.getTimestamp() + ":this.order");
+            TimeZone tz = TimeZone.getTimeZone("UTC");
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'"); // Quoted "Z" to indicate UTC, no timezone offset
+            df.setTimeZone(tz);
+            String nowAsISO = df.format(historyData.getTimestamp());
+            changedUri = new URI("urn:x-trs:" + nowAsISO + ":" + this.order);
             ChangeEvent ce;
             if (histDataType == HistoryData.CREATED) {
                 ce = new Creation(changedUri, uri, this.order);
