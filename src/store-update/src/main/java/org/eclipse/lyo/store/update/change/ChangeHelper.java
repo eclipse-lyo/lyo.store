@@ -15,19 +15,19 @@ import java.util.stream.Collectors;
  */
 public class ChangeHelper {
 
-    public static <M> List<Change<M>> changesCreated(Collection<Change<M>> allChanges) {
+    public static List<Change> changesCreated(Collection<Change> allChanges) {
         return allChanges.stream()
                 .filter(change -> Objects.equals(change.getHistoryResource().getChangeKindEnum(), ChangeKind.CREATION))
                 .collect(Collectors.toList());
     }
 
-    public static <M> List<Change<M>> changesModified(Collection<Change<M>> allChanges) {
-        return allChanges.stream()
-                .filter(change -> Objects.equals(change.getHistoryResource().getChangeKindEnum(), ChangeKind.MODIFICATION))
+    public static List<Change> changesModified(Collection<Change> allChanges) {
+        return allChanges.stream().filter(
+                change -> Objects.equals(change.getHistoryResource().getChangeKindEnum(), ChangeKind.MODIFICATION))
                 .collect(Collectors.toList());
     }
 
-    public static <T> List<HistoryResource> historyFrom(Collection<Change<T>> changes) {
+    public static List<HistoryResource> historyFrom(Collection<Change> changes) {
         return ChangeHelper.mapFn(changes, Change::getHistoryResource);
     }
 
