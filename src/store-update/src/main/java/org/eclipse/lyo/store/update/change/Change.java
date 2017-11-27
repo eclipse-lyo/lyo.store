@@ -9,12 +9,15 @@ import org.eclipse.lyo.oslc4j.core.model.AbstractResource;
  * @version $version-stub$
  * @since 0.0.0
  */
-public class Change<M> {
+public class Change<T> {
+    /**
+     * Not IExtendedResource due to the use of AbstractResource throughout Lyo generated code.
+     */
     private final AbstractResource resource;
     private final HistoryResource historyResource;
-    private final M message;
+    private final T message;
 
-    public Change(AbstractResource resource, HistoryResource historyResource, M message) {
+    public Change(AbstractResource resource, HistoryResource historyResource, T message) {
         this.resource = resource;
         this.historyResource = historyResource;
         this.message = message;
@@ -28,7 +31,7 @@ public class Change<M> {
         return historyResource;
     }
 
-    public M getMessage() {
+    public T getMessage() {
         return message;
     }
 }

@@ -24,6 +24,11 @@ package org.eclipse.lyo.store;
  * @since 0.14.0
  */
 public class ModelUnmarshallingException extends Exception {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 7760792549346636219L;
+
     public ModelUnmarshallingException() {
         super();
     }

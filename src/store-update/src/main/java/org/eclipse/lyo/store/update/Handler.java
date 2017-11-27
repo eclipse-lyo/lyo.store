@@ -12,5 +12,5 @@ import org.eclipse.lyo.store.update.change.Change;
  * @since 0.0.0
  */
 public interface Handler<M> {
-    void handle(Store store, Collection<Change<M>> changes);
+    Collection<Change<M>> handle(Store store, Collection<Change<M>> changes);
 }

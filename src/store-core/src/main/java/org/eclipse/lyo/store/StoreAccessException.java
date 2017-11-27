@@ -23,6 +23,11 @@ package org.eclipse.lyo.store;
  * @since 0.13
  */
 public class StoreAccessException extends Exception {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -7535919324037847033L;
+
     public StoreAccessException() {
         super();
     }

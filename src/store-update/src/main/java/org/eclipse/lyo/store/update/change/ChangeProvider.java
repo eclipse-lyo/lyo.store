@@ -10,6 +10,6 @@ import java.util.Collection;
  * @version $version-stub$
  * @since 0.0.0
  */
-public interface ChangeProvider<M> {
-    Collection<Change<M>> getChangesSince(ZonedDateTime lastUpdate, M message);
+public interface ChangeProvider<T> {
+    Collection<Change<T>> getChangesSince(ZonedDateTime lastUpdate, T message);
 }

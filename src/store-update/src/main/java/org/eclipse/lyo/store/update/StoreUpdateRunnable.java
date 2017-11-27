@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
  * @version $version-stub$
  * @since 0.18.0
  */
-class StoreUpdateRunnable<M extends OSLCMessage> implements Runnable {
+class StoreUpdateRunnable<M> implements Runnable {
 
     private static final ZonedDateTime LAST_UPDATE_DEFAULT = ZonedDateTime.of(1971, 1, 1, 1, 1, 1,
             1, ZoneId.of("UTC"));
@@ -74,7 +74,7 @@ class StoreUpdateRunnable<M extends OSLCMessage> implements Runnable {
                         log.warn("Handler {} threw an exception", handler, e);
                     }
                 }
-                for (final Change change : changes) {
+                for (final Change<?> change : changes) {
                     if (change != null) {
                         final Date date = change.getHistoryResource().getTimestamp();
                         final ZonedDateTime dateTime = date.toInstant()
