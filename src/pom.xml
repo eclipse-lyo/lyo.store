@@ -8,7 +8,7 @@
   <artifactId>store-parent</artifactId>
   <version>2.4.0-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>Lyo Store Parent</name>
+  <name>Lyo Store :: Parent</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,7 +19,7 @@
 
   <modules>
     <module>store-core</module>
-    <module>store-update</module>
+    <module>store-sync</module>
   </modules>
 
   <dependencyManagement>
@@ -54,6 +54,12 @@
         <groupId>xml-apis</groupId>
         <artifactId>xml-apis</artifactId>
         <version>1.3.04</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.1.0</version>
+        <scope>provided</scope>
       </dependency>
 
       <!-- Test -->
@@ -102,6 +108,10 @@
     <license>
       <name>Eclipse Public License 1.0</name>
       <url>https://www.eclipse.org/legal/epl-v10.html</url>
+    </license>
+    <license>
+      <name>Eclipse Distribution License 1.0</name>
+      <url>https://www.eclipse.org/org/documents/edl-v10.html</url>
     </license>
   </licenses>
 </project>
