@@ -336,9 +336,7 @@ public class SparqlStoreImpl implements Store {
     private Model modelFromQueryFlat(final URI namedGraph) throws URISyntaxException {
         // TODO avoid CONSTRUCT query
         final QuerySolutionMap map = getGraphMap(namedGraph);
-        final String queryTemplate = "CONSTRUCT { ?s ?p ?o } where { GRAPH ?g { ?s "
-                                     + "?p "
-                                     + "?o } }";
+        final String queryTemplate = "CONSTRUCT { ?s ?p ?o. ?o ?p1 ?o1 } where { GRAPH ?g { ?s ?p ?o. OPTIONAL {?o ?p1 ?o1. FILTER (isBlank(?o))} } }";
         final ParameterizedSparqlString query = new ParameterizedSparqlString(queryTemplate, map);
 
         final QueryExecution queryExecution = queryExecutor.prepareSparqlQuery(query.toString());
@@ -349,7 +347,7 @@ public class SparqlStoreImpl implements Store {
         // TODO avoid CONSTRUCT query
         final QuerySolutionMap map = getGraphMap(namedGraph);
         map.add("s", new ResourceImpl(String.valueOf(uri)));
-        final String queryTemplate = "CONSTRUCT { ?s ?p ?o } WHERE { GRAPH ?g { ?s ?p ?o . } }";
+        final String queryTemplate = "CONSTRUCT { ?s ?p ?o. ?o ?p1 ?o1 } WHERE { GRAPH ?g { ?s ?p ?o . OPTIONAL {?o ?p1 ?o1. FILTER (isBlank(?o))} } }";
         final ParameterizedSparqlString query = new ParameterizedSparqlString(queryTemplate, map);
 
         final QueryExecution queryExecution = queryExecutor.prepareSparqlQuery(query.toString());
@@ -366,7 +364,7 @@ public class SparqlStoreImpl implements Store {
         map.add("t", typeResource);
         final String queryTemplate = "PREFIX rdf: <http://www"
                                      + ".w3.org/1999/02/22-rdf-syntax-ns#>\n"
-                                     + "CONSTRUCT { ?s ?p ?o }\n"
+                                     + "CONSTRUCT { ?s ?p ?o. ?o ?p1 ?o1  }\n"
                                      + "WHERE {\n"
                                      + "  GRAPH ?g {\n"
                                      + "    ?s ?p ?o\n"
@@ -379,7 +377,7 @@ public class SparqlStoreImpl implements Store {
                                      + "      LIMIT ?l\n"
                                      + "      OFFSET "
                                      + "?f\n"
-                                     + "}\n"
+                                     + "} . OPTIONAL {?o ?p1 ?o1. FILTER (isBlank(?o))}\n"
                                      + "}\n"
                                      + "}\n";
 
