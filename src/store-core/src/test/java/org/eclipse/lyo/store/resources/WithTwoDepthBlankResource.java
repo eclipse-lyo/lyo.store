@@ -41,7 +41,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
-import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import javax.ws.rs.core.UriBuilder;
@@ -264,62 +264,7 @@ public class WithTwoDepthBlankResource
     }
     
     
-    static public String relatesToBlankResourceTwoDepthToHtmlForCreation (final HttpServletRequest httpServletRequest)
-    {
-        String s = "";
-    
-        // Start of user code "Init:relatesToBlankResourceTwoDepthToHtmlForCreation(...)"
-        // End of user code
-    
-        s = s + "<label for=\"relatesToBlankResourceTwoDepth\">relatesToBlankResourceTwoDepth: </LABEL>";
-    
-        // Start of user code "Mid:relatesToBlankResourceTwoDepthToHtmlForCreation(...)"
-        // End of user code
-    
-        // Start of user code "Finalize:relatesToBlankResourceTwoDepthToHtmlForCreation(...)"
-        // End of user code
-    
-        return s;
-    }
-    
-    static public String stringPropertyToHtmlForCreation (final HttpServletRequest httpServletRequest)
-    {
-        String s = "";
-    
-        // Start of user code "Init:stringPropertyToHtmlForCreation(...)"
-        // End of user code
-    
-        s = s + "<label for=\"stringProperty\">stringProperty: </LABEL>";
-    
-        // Start of user code "Mid:stringPropertyToHtmlForCreation(...)"
-        // End of user code
-    
-        s= s + "<input name=\"stringProperty\" type=\"text\" style=\"width: 400px\" id=\"stringProperty\" >";
-        // Start of user code "Finalize:stringPropertyToHtmlForCreation(...)"
-        // End of user code
-    
-        return s;
-    }
-    
-    static public String intPropertyToHtmlForCreation (final HttpServletRequest httpServletRequest)
-    {
-        String s = "";
-    
-        // Start of user code "Init:intPropertyToHtmlForCreation(...)"
-        // End of user code
-    
-        s = s + "<label for=\"intProperty\">intProperty: </LABEL>";
-    
-        // Start of user code "Mid:intPropertyToHtmlForCreation(...)"
-        // End of user code
-    
-        s= s + "<input name=\"intProperty\" type=\"text\" style=\"width: 400px\" id=\"intProperty\" >";
-        // Start of user code "Finalize:intPropertyToHtmlForCreation(...)"
-        // End of user code
-    
-        return s;
-    }
-    
+
     
     public String relatesToBlankResourceTwoDepthToHtml()
     {

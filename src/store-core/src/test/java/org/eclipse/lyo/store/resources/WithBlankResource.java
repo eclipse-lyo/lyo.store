@@ -41,7 +41,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Iterator;
-import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import javax.ws.rs.core.UriBuilder;
@@ -235,6 +235,7 @@ public class WithBlankResource
     }
     
     
+/*
     static public String relatesToBlankResourceToHtmlForCreation (final HttpServletRequest httpServletRequest)
     {
         String s = "";
@@ -271,7 +272,8 @@ public class WithBlankResource
     
         return s;
     }
-    
+*/
+
     
     public String relatesToBlankResourceToHtml()
     {
