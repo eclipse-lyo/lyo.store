@@ -24,6 +24,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Set;
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -194,6 +195,28 @@ public abstract class StoreTestBase<T extends Store> {
         Assertions.assertThat(resourceUnderKey).isNotNull();
         Assertions.assertThat(resourceUnderKey.getAbout().equals(resource2.getAbout()));
     }
+
+    @Test(expected = NoSuchElementException.class)
+    public void testMissingResourceException()
+            throws StoreAccessException, ModelUnmarshallingException, URISyntaxException {
+        final T manager = buildStore();
+        final URI testKeyAdd = buildKey();
+        final IResource resource = buildResource();
+        final IResource resource2 = buildResource();
+        final IResource resource3 = buildResource();
+        final ArrayList<IResource> resources = new ArrayList<IResource>();
+        resources.add(resource);
+        resources.add(resource2);
+        resources.add(resource3);
+
+        manager.appendResources(testKeyAdd, resources);
+
+        ServiceProviderCatalog resourceUnderKey = manager.getResource(testKeyAdd,
+                                                                      new URI("urn:blabla"),
+                                                                      ServiceProviderCatalog
+                                                                              .class);
+    }
+
 
     @Test
     public void testStoreKeySetReturnsCorrectKeys()
