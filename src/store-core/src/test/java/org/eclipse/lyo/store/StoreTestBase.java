@@ -182,7 +182,7 @@ public abstract class StoreTestBase<T extends Store> {
         final IResource resource = buildResource();
         final IResource resource2 = buildResource();
         final IResource resource3 = buildResource();
-        final ArrayList<IResource> resources = new ArrayList<IResource>();
+        final ArrayList<IResource> resources = new ArrayList<>();
         resources.add(resource);
         resources.add(resource2);
         resources.add(resource3);
@@ -204,17 +204,14 @@ public abstract class StoreTestBase<T extends Store> {
         final IResource resource = buildResource();
         final IResource resource2 = buildResource();
         final IResource resource3 = buildResource();
-        final ArrayList<IResource> resources = new ArrayList<IResource>();
+        final ArrayList<IResource> resources = new ArrayList<>();
         resources.add(resource);
         resources.add(resource2);
         resources.add(resource3);
 
         manager.appendResources(testKeyAdd, resources);
 
-        ServiceProviderCatalog resourceUnderKey = manager.getResource(testKeyAdd,
-                                                                      new URI("urn:blabla"),
-                                                                      ServiceProviderCatalog
-                                                                              .class);
+        manager.getResource(testKeyAdd, new URI("urn:blabla"), ServiceProviderCatalog.class);
     }
 
 

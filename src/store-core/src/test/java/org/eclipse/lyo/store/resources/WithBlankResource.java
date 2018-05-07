@@ -233,46 +233,6 @@ public class WithBlankResource
         // Start of user code setterFinalize:stringProperty
         // End of user code
     }
-    
-    
-/*
-    static public String relatesToBlankResourceToHtmlForCreation (final HttpServletRequest httpServletRequest)
-    {
-        String s = "";
-    
-        // Start of user code "Init:relatesToBlankResourceToHtmlForCreation(...)"
-        // End of user code
-    
-        s = s + "<label for=\"relatesToBlankResource\">relatesToBlankResource: </LABEL>";
-    
-        // Start of user code "Mid:relatesToBlankResourceToHtmlForCreation(...)"
-        // End of user code
-    
-        // Start of user code "Finalize:relatesToBlankResourceToHtmlForCreation(...)"
-        // End of user code
-    
-        return s;
-    }
-    
-    static public String stringPropertyToHtmlForCreation (final HttpServletRequest httpServletRequest)
-    {
-        String s = "";
-    
-        // Start of user code "Init:stringPropertyToHtmlForCreation(...)"
-        // End of user code
-    
-        s = s + "<label for=\"stringProperty\">stringProperty: </LABEL>";
-    
-        // Start of user code "Mid:stringPropertyToHtmlForCreation(...)"
-        // End of user code
-    
-        s= s + "<input name=\"stringProperty\" type=\"text\" style=\"width: 400px\" id=\"stringProperty\" >";
-        // Start of user code "Finalize:stringPropertyToHtmlForCreation(...)"
-        // End of user code
-    
-        return s;
-    }
-*/
 
     
     public String relatesToBlankResourceToHtml()
