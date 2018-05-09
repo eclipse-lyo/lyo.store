@@ -162,6 +162,12 @@ public class JenaTdbStoreImpl implements Store {
         return resources.subList(offset, Math.min(resources.size(), offset + limit));
     }
 
+	@Override
+	public Model getResources(URI namedGraph, String prefixes, String where, int limit,
+			int offset) throws URISyntaxException {
+        throw new UnsupportedOperationException();
+	}
+
     @Override
     public Set<String> keySet() {
         dataset.begin(ReadWrite.READ);
