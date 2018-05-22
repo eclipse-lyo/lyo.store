@@ -211,13 +211,15 @@ public class SparqlStoreImpl implements Store {
     @Override
     public Model getJenaModelForSubject(final URI namedGraphUri, final URI subject)
             throws NoSuchElementException {
-        if (namedGraphExists(namedGraphUri)) {
-            final Model model;
-            model = modelFromQueryByUri(namedGraphUri, subject);
-            return model;
-        } else {
-            throw new NoSuchElementException("Cache namedGraph was missing from the triplestore");
+        if (!namedGraphExists(namedGraphUri)) {
+            throw new NoSuchElementException("namedGraph '" + namedGraphUri + "' is missing from the triplestore");
         }
+        final Model model;
+        model = modelFromQueryByUri(namedGraphUri, subject);
+        if (model.isEmpty()) {
+            throw new NoSuchElementException("resource '" + subject + "' is missing from the triplestore at namedGraph '" + namedGraphUri + "'");
+        }
+        return model;
     }
 
     @Override
@@ -398,14 +400,26 @@ public class SparqlStoreImpl implements Store {
     }
 
     private Model modelFromQueryByUri(final URI namedGraph, final URI uri) {
-        // TODO avoid CONSTRUCT query
         final QuerySolutionMap map = getGraphMap(namedGraph);
         map.add("s", new ResourceImpl(String.valueOf(uri)));
         final String queryTemplate = "DESCRIBE ?s WHERE { GRAPH ?g { ?s ?p ?o . } }";
         final ParameterizedSparqlString query = new ParameterizedSparqlString(queryTemplate, map);
 
         final QueryExecution queryExecution = queryExecutor.prepareSparqlQuery(query.toString());
-        return queryExecution.execDescribe();
+
+        Model execDescribe;
+        try {
+            execDescribe = queryExecution.execDescribe();
+		} catch (RiotException e) {
+			//a request that returns an empty set seems to cause an exception when using Marklogic.
+			if ((e.getCause() == null) && (e.getMessage().equals("[line: 2, col: 2 ] Out of place: [DOT]"))) {
+		        return ModelFactory.createDefaultModel();
+			}
+			// Otherwise, there is a proper exception that we need to deal with!
+	        throw e;
+		}
+        return execDescribe;
+        
     }
 
     private Model modelFromQueryFlatPaged(final URI namedGraph, final URI type, final int limit,

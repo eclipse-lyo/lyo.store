@@ -106,7 +106,7 @@ public interface Store {
      * Retrieve a Jena model for triples under the given subject from the corresponding named graph.
      */
     Model getJenaModelForSubject(URI namedGraphUri, URI subject)
-            throws NoSuchElementException, StoreAccessException, ModelUnmarshallingException;
+            throws NoSuchElementException;
 
     /**
      * Retrieve the collection of {@link IResource} instances specified by the concrete

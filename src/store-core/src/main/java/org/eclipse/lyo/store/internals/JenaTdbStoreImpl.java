@@ -260,7 +260,7 @@ public class JenaTdbStoreImpl implements Store {
 
     @Override
     public Model getJenaModelForSubject(URI namedGraphUri, URI subject)
-            throws NoSuchElementException, StoreAccessException, ModelUnmarshallingException {
+            throws NoSuchElementException {
         throw new UnsupportedOperationException();
     }
 
