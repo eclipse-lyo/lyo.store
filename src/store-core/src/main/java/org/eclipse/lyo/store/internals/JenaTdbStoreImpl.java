@@ -163,8 +163,14 @@ public class JenaTdbStoreImpl implements Store {
     }
 
 	@Override
-	public Model getResources(URI namedGraph, String prefixes, String where, int limit,
-			int offset) throws URISyntaxException {
+	public <T extends IResource> List<T> getResources(URI namedGraphUri, Class<T> clazz, String prefixes, String where,
+			String searchTerms, int limit, int offset) throws StoreAccessException, ModelUnmarshallingException {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public Model getResources(URI namedGraph, String prefixes, String where, String searchTerms, int limit,
+			int offset) {
         throw new UnsupportedOperationException();
 	}
 
