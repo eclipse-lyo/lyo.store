@@ -316,11 +316,17 @@ public abstract class StoreTestBase<T extends Store> {
         List<Requirement> whereAndTextSearchedResources = manager.getResources(namedGraphUri, Requirement.class, "dcterms=<http://purl.org/dc/terms/>", "dcterms:identifier=\"observations\"", "roof", -1, -1);
         List<Requirement> noMatchResources = manager.getResources(namedGraphUri, Requirement.class, "dcterms=<http://purl.org/dc/terms/>", "dcterms:identifier=\"observations\"", "velocity", -1, -1);
 
+        Model model = manager.getResources(namedGraphUri, null, null, "", -1, -1);
+        Model modelForTextSearch = manager.getResources(namedGraphUri, null, null, "river", -1, -1);
+        
         Assertions.assertThat(allRequirementsResources).hasSize(6);
         Assertions.assertThat(textSearchedResources).hasSize(2);
         Assertions.assertThat(whereFilteredResources).hasSize(1);
         Assertions.assertThat(whereAndTextSearchedResources).hasSize(1);
         Assertions.assertThat(noMatchResources).hasSize(0);
+
+        Assertions.assertThat(model.listSubjects().toList()).hasSize(7);
+        Assertions.assertThat(modelForTextSearch.listSubjects().toList()).hasSize(2);
     }
 
 
