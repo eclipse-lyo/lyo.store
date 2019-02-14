@@ -265,12 +265,17 @@ public class SparqlStoreImpl implements Store {
         String _prefixes = prefixes;
         String _where = where;
 
-        _prefixes = (StringUtils.isEmpty(_prefixes) ? "" : _prefixes + ",") + "rdf=" + "<" + "http://www.w3.org/1999/02/22-rdf-syntax-ns#" + ">";
-    	_where = (StringUtils.isEmpty(_where) ? "" : _where + " and ") + "rdf:type=" + "<" + getResourceNsUri(clazz) + ">";
+    	_prefixes = (StringUtils.isEmpty(_prefixes) ? "" : _prefixes + ",") + buildQueryPrefixes(clazz);
+		_where = (StringUtils.isEmpty(_where) ? "" : _where + " and ") + buildQueryWhere(clazz);
         Model model = getResources(namedGraph, _prefixes, _where, searchTerms, limit, offset);
         return getResourcesFromModel(model, clazz);
     }
 
+    @Override
+    public Model getResources(final URI namedGraph, final String prefixes, final String where, final int limit, final int offset) {
+        return getResources(namedGraph, prefixes, where, null, limit, offset);
+    }
+    
     @Override
     public Model getResources(final URI namedGraph, final String prefixes, final String where, final String searchTerms, final int limit, final int offset) {
 
@@ -366,6 +371,14 @@ public class SparqlStoreImpl implements Store {
     @Override
     public void removeAll() {
         queryExecutor.prepareSparqlUpdate("CLEAR ALL").execute();
+    }
+
+    private <T extends IResource> String buildQueryPrefixes(final Class<T> clazz) {
+        return "rdf=" + "<" + org.apache.jena.vocabulary.RDF.uri + ">";
+    }
+
+    private <T extends IResource> String buildQueryWhere(final Class<T> clazz) {
+    	return "rdf:type=" + "<" + getResourceNsUri(clazz) + ">";
     }
 
     private <T extends IResource> List<T> getResourcesFromModel(final Model model,
@@ -549,6 +562,7 @@ public class SparqlStoreImpl implements Store {
 		}
 		
         //Setup searchTerms
+        //Add a sparql filter "FILTER regex(?o, "<searchTerms>", "i")" to the distinctResourcesQuery
 		if (!StringUtils.isEmpty(searchTerms)) {
 			ExprFactory factory = new ExprFactory();
 			E_Regex regex = factory.regex("?o", searchTerms, "i");

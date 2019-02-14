@@ -169,6 +169,12 @@ public class JenaTdbStoreImpl implements Store {
 	}
 
 	@Override
+	public Model getResources(URI namedGraph, String prefixes, String where, int limit,
+			int offset) {
+        throw new UnsupportedOperationException();
+	}
+
+	@Override
 	public Model getResources(URI namedGraph, String prefixes, String where, String searchTerms, int limit,
 			int offset) {
         throw new UnsupportedOperationException();
