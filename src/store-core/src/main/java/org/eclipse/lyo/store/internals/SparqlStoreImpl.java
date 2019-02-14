@@ -256,17 +256,15 @@ public class SparqlStoreImpl implements Store {
     }
 
     @Override
-    public <T extends IResource> List<T> getResources(final URI namedGraph,
-            final Class<T> clazz, 
-            final String prefixes, final String where, final String searchTerms, 
-            final int limit, final int offset)
+    public <T extends IResource> List<T> getResources(final URI namedGraph, final Class<T> clazz, final String prefixes,
+            final String where, final String searchTerms, final int limit, final int offset)
             throws StoreAccessException, ModelUnmarshallingException {
 
         String _prefixes = prefixes;
         String _where = where;
 
-    	_prefixes = (StringUtils.isEmpty(_prefixes) ? "" : _prefixes + ",") + buildQueryPrefixes(clazz);
-		_where = (StringUtils.isEmpty(_where) ? "" : _where + " and ") + buildQueryWhere(clazz);
+        _prefixes = (StringUtils.isEmpty(_prefixes) ? "" : _prefixes + ",") + buildQueryPrefixes(clazz);
+        _where = (StringUtils.isEmpty(_where) ? "" : _where + " and ") + buildQueryWhere(clazz);
         Model model = getResources(namedGraph, _prefixes, _where, searchTerms, limit, offset);
         return getResourcesFromModel(model, clazz);
     }
@@ -565,7 +563,7 @@ public class SparqlStoreImpl implements Store {
         //Add a sparql filter "FILTER regex(?o, "<searchTerms>", "i")" to the distinctResourcesQuery
 		if (!StringUtils.isEmpty(searchTerms)) {
 			ExprFactory factory = new ExprFactory();
-			E_Regex regex = factory.regex("?o", searchTerms, "i");
+            E_Regex regex = factory.regex(factory.str("?o"), searchTerms, "i");
 			distinctResourcesQuery.addFilter(regex);
 		}
 		

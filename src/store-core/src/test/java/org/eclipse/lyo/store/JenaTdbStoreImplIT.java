@@ -65,4 +65,10 @@ public class JenaTdbStoreImplIT extends StoreTestBase<JenaTdbStoreImpl> {
         final Path tempDirectory = Paths.get("/tmp/try_tdb"); // make sure `ls -l /tmp` shows correct permissions
         StoreFactory.onDisk(tempDirectory);
     }
+    
+    @Override
+    @Ignore("Not implemented yet")
+    public void testStoreQueryWithNoWhereNorSearchTerm() {
+    }
+
 }

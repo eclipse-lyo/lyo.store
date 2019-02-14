@@ -18,6 +18,8 @@ import org.apache.jena.query.Dataset;
 import org.apache.jena.tdb.TDBFactory;
 import org.eclipse.lyo.store.internals.JenaTdbStoreImpl;
 import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * DatasetBuilderTest is .
@@ -38,6 +40,11 @@ public class JenaTdbStoreImplTest extends StoreTestBase<JenaTdbStoreImpl> {
     @Override
     protected JenaTdbStoreImpl buildStore() {
         return new JenaTdbStoreImpl(memDataset);
+    }
+
+    @Override
+    @Ignore("Not implemented yet")
+    public void testStoreQueryWithNoWhereNorSearchTerm() {
     }
 
 }

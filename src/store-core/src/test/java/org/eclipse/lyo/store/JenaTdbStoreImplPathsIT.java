@@ -20,6 +20,7 @@ import java.nio.file.Path;
 import org.eclipse.lyo.store.internals.DatasetBuilder;
 import org.eclipse.lyo.store.internals.JenaTdbStoreImpl;
 import org.junit.Before;
+import org.junit.Ignore;
 
 /**
  * DatasetBuilderTest is .
@@ -44,6 +45,11 @@ public class JenaTdbStoreImplPathsIT extends StoreTestBase<JenaTdbStoreImpl> {
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }
+    }
+
+    @Override
+    @Ignore("Not implemented yet")
+    public void testStoreQueryWithNoWhereNorSearchTerm() {
     }
 
 }
