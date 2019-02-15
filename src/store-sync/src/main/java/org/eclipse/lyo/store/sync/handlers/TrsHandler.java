@@ -4,8 +4,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.eclipse.lyo.oslc4j.trs.provider.ChangeHistories;
-import org.eclipse.lyo.oslc4j.trs.provider.HistoryData;
+import org.eclipse.lyo.oslc4j.trs.server.ChangeHistories;
+import org.eclipse.lyo.oslc4j.trs.server.HistoryData;
 import org.eclipse.lyo.store.Store;
 import org.eclipse.lyo.store.sync.Handler;
 import org.eclipse.lyo.store.sync.change.Change;
