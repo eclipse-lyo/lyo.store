@@ -263,8 +263,8 @@ public class SparqlStoreImpl implements Store {
         String _prefixes = prefixes;
         String _where = where;
 
-        _prefixes = (StringUtils.isEmpty(_prefixes) ? "" : _prefixes + ",") + buildQueryPrefixes(clazz);
-        _where = (StringUtils.isEmpty(_where) ? "" : _where + " and ") + buildQueryWhere(clazz);
+        _prefixes = (StringUtils.isEmpty(_prefixes) ? "" : _prefixes + ",") + oslcQueryPrefixes(clazz);
+        _where = (StringUtils.isEmpty(_where) ? "" : _where + " and ") + oslcQueryWhere(clazz);
         Model model = getResources(namedGraph, _prefixes, _where, searchTerms, limit, offset);
         return getResourcesFromModel(model, clazz);
     }
@@ -371,11 +371,11 @@ public class SparqlStoreImpl implements Store {
         queryExecutor.prepareSparqlUpdate("CLEAR ALL").execute();
     }
 
-    private <T extends IResource> String buildQueryPrefixes(final Class<T> clazz) {
+    private <T extends IResource> String oslcQueryPrefixes(final Class<T> clazz) {
         return "rdf=" + "<" + org.apache.jena.vocabulary.RDF.uri + ">";
     }
 
-    private <T extends IResource> String buildQueryWhere(final Class<T> clazz) {
+    private <T extends IResource> String oslcQueryWhere(final Class<T> clazz) {
     	return "rdf:type=" + "<" + getResourceNsUri(clazz) + ">";
     }
 

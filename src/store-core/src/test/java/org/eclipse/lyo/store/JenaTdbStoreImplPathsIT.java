@@ -15,6 +15,7 @@ package org.eclipse.lyo.store;
  */
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import org.eclipse.lyo.store.internals.DatasetBuilder;
@@ -49,7 +50,44 @@ public class JenaTdbStoreImplPathsIT extends StoreTestBase<JenaTdbStoreImpl> {
 
     @Override
     @Ignore("Not implemented yet")
-    public void testStoreQueryWithNoWhereNorSearchTerm() {
+    public void testStoreQueryForAllRequirementResources()
+            throws StoreAccessException, ModelUnmarshallingException, URISyntaxException {
+    }
+
+    @Override
+    @Ignore("Not implemented yet")
+    public void testStoreQueryForRequirementResourcesWithFreeTextSearch()
+            throws StoreAccessException, ModelUnmarshallingException, URISyntaxException {
+    }
+
+    @Override
+    @Ignore("Not implemented yet")
+    public void testStoreQueryForRequirementResourcesWithWhereFilter()
+            throws StoreAccessException, ModelUnmarshallingException, URISyntaxException {
+   }
+
+    @Override
+    @Ignore("Not implemented yet")
+    public void testStoreQueryForRequirementResourcesWithFreeTextSearchAndWhereFilter()
+            throws StoreAccessException, ModelUnmarshallingException, URISyntaxException {
+    }
+
+    @Override
+    @Ignore("Not implemented yet")
+    public void testStoreQueryForRequirementResourcesWithNoMatch()
+            throws StoreAccessException, ModelUnmarshallingException, URISyntaxException {
+    }
+
+    @Override
+    @Ignore("Not implemented yet")
+    public void testStoreQueryForAllResources()
+            throws StoreAccessException, ModelUnmarshallingException, URISyntaxException {
+    }
+
+    @Override
+    @Ignore("Not implemented yet")
+    public void testStoreQueryForAllResourcesWithFreeTextSearch()
+            throws StoreAccessException, ModelUnmarshallingException, URISyntaxException {
     }
 
 }
