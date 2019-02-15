@@ -6,11 +6,12 @@
 
   <groupId>org.eclipse.lyo.store</groupId>
   <artifactId>store-parent</artifactId>
-  <version>2.4.0-SNAPSHOT</version>
+  <version>4.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Lyo Store :: Parent</name>
 
   <properties>
+    <maven.deploy.skip>false</maven.deploy.skip>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -32,7 +33,11 @@
         <version>3.6.0</version>
         <type>pom</type>
       </dependency>
-
+       <dependency>
+        <groupId>org.apache.jena</groupId>
+        <artifactId>jena-querybuilder</artifactId>
+        <version>3.6.0</version>
+      </dependency>
       <!-- Generic -->
       <dependency>
         <groupId>org.slf4j</groupId>
@@ -75,6 +80,31 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>3.0.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>3.0.1</version>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <goals>
+                <goal>jar-no-fork</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 
   <repositories>
     <repository>

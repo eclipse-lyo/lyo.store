@@ -13,9 +13,11 @@
 hs_err_pid*
 
 # Eclipse
-/.project
-/.classpath
-/.metadata
+**/bin/
+**/tmp/
+.project
+.classpath
+.metadata
 *.tmp
 *.bak
 *.swp
@@ -63,8 +65,8 @@ local.properties
 # MAVEN
 #########################
 
-/overlays/
-/target/
+**/overlays/
+**/target/
 pom.xml.tag
 pom.xml.next
 release.properties
