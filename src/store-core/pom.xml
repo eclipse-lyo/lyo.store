@@ -46,11 +46,6 @@
         </exclusion>
       </exclusions>
     </dependency>
-
-    <dependency>
-      <groupId>org.apache.jena</groupId>
-      <artifactId>apache-jena-libs</artifactId>
-      <type>pom</type>
     <dependency>
         <groupId>org.eclipse.lyo.core.query</groupId>
         <artifactId>oslc-query</artifactId>
