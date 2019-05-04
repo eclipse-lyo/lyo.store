@@ -562,7 +562,7 @@ public class SparqlStoreImpl implements Store {
     			        distinctResourcesQuery.addWhere( "?s", predicate,  new ResourceImpl(uriOperand.value()));
     					break;
     				default:
-    			        throw new UnsupportedOperationException("only support for terms of type Comparisons, where the operator is 'EQUALS', and the operand is either a String or a URI");
+    			        throw new UnsupportedOperationException("only support for terms of type Comparisons, where the operator is 'EQUALS', and the operand is either a String, an Integer or a URI");
     				}
     			}
         	}
