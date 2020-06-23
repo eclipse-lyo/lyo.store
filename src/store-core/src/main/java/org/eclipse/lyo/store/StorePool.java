@@ -15,25 +15,25 @@ package org.eclipse.lyo.store;
  */
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+
 import org.eclipse.lyo.store.Store;
 import org.eclipse.lyo.store.StoreFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class StorePool {
 
-    private int initialPoolSize;
     private URI defaultNamedGraphUri;
-    private List<Store> storePool;
-    private List<Store> usedStores;
-    private Object lock = new Object();
+    private BlockingQueue<Store> storePool;
+    private static final Logger log = LoggerFactory.getLogger(StorePool.class);
 
-    public StorePool (int initialPoolSize, URI defaultNamedGraphUri, URI sparqlQueryEndpoint, URI sparqlUpdateEndpoint, String userName, String password) {
-        this.initialPoolSize = initialPoolSize; 
+
+    public StorePool (int poolSize, URI defaultNamedGraphUri, URI sparqlQueryEndpoint, URI sparqlUpdateEndpoint, String userName, String password) {
         this.defaultNamedGraphUri = defaultNamedGraphUri;
-        this.storePool = new ArrayList<>(this.initialPoolSize);
-        this.usedStores = new ArrayList<>();
-        for (int i = 0; i < this.initialPoolSize; i++) {
+        this.storePool = new ArrayBlockingQueue<Store>(poolSize);
+        for (int i = 0; i < poolSize; i++) {
             Store s = null;
             if( userName != null && password != null ){
                 s = StoreFactory.sparql(sparqlQueryEndpoint.toString(), sparqlUpdateEndpoint.toString(), userName, password);
@@ -49,24 +49,21 @@ public class StorePool {
     }
 
     public Store getStore() {
-        if (storePool.isEmpty()) {
-            throw new RuntimeException("Maximum pool size reached, no available store connections!");
+        try {
+            return storePool.take();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();  // set interrupt flag
+            log.error("Failed to get a store from the pool", e);
+            return null;
         }
-        Store s;
-        synchronized(lock) {
-            if (storePool.isEmpty()) {
-                throw new RuntimeException("Maximum pool size reached, no available store connections!");
-            }
-            s = storePool.remove(storePool.size() - 1);
-            usedStores.add(s);
-        }
-        return s;
     }
      
-    public boolean releaseStore(Store store) {
-        synchronized(lock) {
-            storePool.add(store);
-            return usedStores.remove(store);
+    public void releaseStore(Store store) {
+        try {
+            storePool.put(store);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();  // set interrupt flag
+            log.error("Failed to get a store from the pool", e);
         }
     }
 }
