@@ -48,6 +48,7 @@ import org.slf4j.LoggerFactory;
  * @version $version-stub$
  * @since 0.11.0
  */
+@Deprecated
 public class JenaTdbStoreImpl implements Store {
     private static final Logger log = LoggerFactory.getLogger(JenaTdbStoreImpl.class);
     private final Dataset dataset;
@@ -163,8 +164,20 @@ public class JenaTdbStoreImpl implements Store {
     }
 
 	@Override
+	public <T extends IResource> List<T> getResources(URI namedGraphUri, Class<T> clazz, String prefixes, String where,
+			String searchTerms, int limit, int offset) throws StoreAccessException, ModelUnmarshallingException {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
 	public Model getResources(URI namedGraph, String prefixes, String where, int limit,
-			int offset) throws URISyntaxException {
+			int offset) {
+        throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public Model getResources(URI namedGraph, String prefixes, String where, String searchTerms, int limit,
+			int offset) {
         throw new UnsupportedOperationException();
 	}
 

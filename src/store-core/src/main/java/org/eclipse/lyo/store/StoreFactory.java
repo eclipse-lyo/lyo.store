@@ -40,6 +40,7 @@ public class StoreFactory {
      *
      * @return Store implementation that keeps triples in memory.
      */
+    @Deprecated
     public static Store inMemory() {
         final Dataset dataset = TDBFactory.createDataset();
         return new JenaTdbStoreImpl(dataset);
@@ -56,6 +57,7 @@ public class StoreFactory {
      *
      * @throws IllegalArgumentException If the TDB cannot be initialised in a given directory.
      */
+    @Deprecated
     public static Store onDisk(final Path path) throws IllegalArgumentException {
         try {
             final Dataset dataset = DatasetBuilder.buildPersistent(path);
@@ -72,9 +74,8 @@ public class StoreFactory {
      * @param updateUrl SPARQL Update endpoint URI
      * @return Store implementation that communicates with the triplestore via SPARQL.
      *
-     * @throws IOException If the SPARQL endpoint cannot be accessed.
      */
-    public static Store sparql(final String queryUrl, final String updateUrl) throws IOException {
+    public static Store sparql(final String queryUrl, final String updateUrl) {
         return new SparqlStoreImpl(queryUrl, updateUrl);
     }
 
@@ -89,10 +90,9 @@ public class StoreFactory {
      * @param password  Password
      * @return Store implementation that communicates with the triplestore via SPARQL.
      *
-     * @throws IOException If the SPARQL endpoint cannot be accessed.
      */
     public static Store sparql(final String queryUrl, final String updateUrl, final String username,
-            final String password) throws IOException {
+            final String password) {
         return new SparqlStoreImpl(queryUrl, updateUrl, username, password);
     }
 

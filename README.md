@@ -1,6 +1,7 @@
 # Lyo Store
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5f9560aee08b4c28a094b9fc2e3d43f2)](https://www.codacy.com/app/berezovskyi/lyo-store?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=eclipse/lyo-store&amp;utm_campaign=Badge_Grade)
+[![CI](https://github.com/eclipse/lyo.store/workflows/CI/badge.svg?branch=master)](https://github.com/eclipse/lyo.store/actions?query=workflow%3ACI)
 [![Build Status](https://travis-ci.org/eclipse/lyo.store.svg?branch=master)](https://travis-ci.org/eclipse/lyo.store)
 [![](https://img.shields.io/badge/javadoc-latest-blue.svg)](https://download.eclipse.org/lyo/docs/store/latest/)
 [![](https://img.shields.io/badge/misc-discourse-lightgrey.svg)](https://forum.open-services.net/)
@@ -23,14 +24,14 @@ If you encounter any API questions along the way, consult the [Javadoc][javadoc]
 
 Lyo uses Maven as a primary choice for the build system.
 
-First, make sure your POM file includes the Eclipse Maven repositories ```<repositories>...</repositories>``` as indicated in the general [Creating OSLC4J Project](https://wiki.eclipse.org/Lyo/creating_OSLC4J_project#Lyo_repositories) instructions.
+First, make sure your POM file includes the Eclipse Maven repositories ```<repositories>...</repositories>``` as indicated in the general [Creating OSLC4J Project](https://oslc.github.io/developing-oslc-applications/eclipse_lyo/setup-an-oslc-provider-consumer-application.html) instructions.
 
 Now, add the following dependency:
 ```xml
 <dependency>
     <groupId>org.eclipse.lyo.store</groupId>
     <artifactId>store-core</artifactId>
-    <version>2.2.0</version>
+    <version>2.4.0</version>
 </dependency>
 ```
 Now you are all set to start using the library.
@@ -118,4 +119,4 @@ if (store.namedGraphExists(GRAPH_NAME)) {
 [1]: https://jena.apache.org/documentation/tdb/architecture.html#caching-on-32-and-64-bit-java-systems
 
 [javadoc]: http://download.eclipse.org/lyo/docs/store/latest/overview-summary.html
-[forum]: https://www.eclipse.org/forums/index.php/f/228/
+[forum]: https://forum.open-services.net/c/sdks/lyo
