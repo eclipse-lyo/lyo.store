@@ -19,7 +19,7 @@ import org.junit.Test;
  *
  * @author Andrew Berezovskyi (andriib@kth.se)
  * @version $version-stub$
- * @since 0.0.0
+ * @since 4.0.0
  */
 public class TestHistoryResource {
     public static final URI RESOURCE_URI = URI.create("test:test");

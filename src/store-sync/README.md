@@ -2,8 +2,6 @@
 
 *Lyo Store* is a library that provides a simple interface for working with a triplestore via Java objects representing OSLC Resources. Lyo Store and Jena Models in the triple stores.
 
-**[Lyo Store Javadoc](http://assume.gitlab.io/jena-cache/apidocs/)**
-
 ## Prerequisites
 
 * For an in-memory option: JVM heap should be set to 1G or above (see [Jena documentation][1] for more information on this).
@@ -15,7 +13,7 @@
     <dependency>
       <groupId>org.eclipse.lyo.tools</groupId>
       <artifactId>lyo-store</artifactId>
-      <version>0.24.0-SNAPSHOT</version>
+      <version>%version%</version>
     </dependency>
 
 More build systems are covered here: http://assume.gitlab.io/jena-cache/dependency-info.html

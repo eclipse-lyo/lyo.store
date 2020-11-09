@@ -23,6 +23,7 @@
   <modules>
     <module>store-core</module>
     <module>store-sync</module>
+<!--    <module>store-sync-trs</module>-->
   </modules>
 
   <dependencyManagement>
