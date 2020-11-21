@@ -29,7 +29,7 @@ Now, add the following dependency:
 <dependency>
     <groupId>org.eclipse.lyo.store</groupId>
     <artifactId>store-core</artifactId>
-    <version>2.4.0</version>
+    <version>%version%</version>
 </dependency>
 ```
 Now you are all set to start using the library.
